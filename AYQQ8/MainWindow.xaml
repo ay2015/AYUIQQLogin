@@ -1,0 +1,343 @@
+﻿<control:AyWindow x:Class="AYQQ8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="http://www.ayjs.net/controls"
+                  xmlns:qControl="clr-namespace:AYQQ8.Controls"
+        xmlns:local="clr-namespace:AYQQ8" Loaded="AyWindow_Loaded"
+                  KeyboardNavigation.TabNavigation="Cycle"
+        mc:Ignorable="d" CornerRadius="0" CloseButtonCornerRadius="0,0,0,0"  
+        Height="459" Width="559"
+        Opacity="1"
+        TitleVisibility="Collapsed" Icon="/AYQQ8;component/Icons/ayui_48.ico"  BorderThickness="1" BorderBrush="Transparent"
+        Title="AY的QQ" MinHeight="459" MinWidth="559" MaxHeight="459" MaxWidth="559" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"  MaxButtonVisibility="Collapsed" SkinButtonVisibility="Collapsed">
+    <control:AyWindow.Resources>
+        <Color x:Key="LoginButton.Static.Brush" >#09A3DC</Color>
+        <Color x:Key="LoginButton.Hover.Brush" >#3CC3F5</Color>
+        <Color x:Key="LoginButton.Peessed.Brush">#098CBC</Color>
+
+        <Style x:Key="LoginButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+            <Setter Property="Background" Value="#09A3DC"/>
+            <Setter Property="BorderBrush" Value="#09A3DC"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"  BorderThickness="0"  SnapsToDevicePixels="True" Background="#09A3DC" CornerRadius="5">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.5">
+                                            <VisualTransition.GeneratedEasingFunction>
+                                                <CircleEase EasingMode="EaseOut"/>
+                                            </VisualTransition.GeneratedEasingFunction>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                                <EasingColorKeyFrame KeyTime="0" Value="{StaticResource LoginButton.Hover.Brush}"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                                <EasingColorKeyFrame KeyTime="0" Value="{StaticResource LoginButton.Peessed.Brush}"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </control:AyWindow.Resources>
+    <control:TransitionPresenter x:Name="windowcontent"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                                 Content="{Binding LoginWindowType,RelativeSource={RelativeSource AncestorType={x:Type Window},Mode=FindAncestor}}" >
+        <control:TransitionPresenter.Resources>
+            <DataTemplate DataType="{x:Type local:AyLoginFrontWindow}">
+                <Grid Margin="0,-24,0,0">
+                    <Border x:Name="AyShadowLayer"  CornerRadius="0"  Background="#00FFFFFF" BorderBrush="#F64D4D4D" Margin="0"
+                     BorderThickness="7" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                        <Border.Effect>
+                            <BlurEffect Radius="14"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="207"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.RowSpan="2">
+                            <Border  x:Name="bgLayoutStatic"  Margin="0,0,0,0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Resources/static.png" Stretch="UniformToFill"/>
+                                </Border.Background>
+
+                            </Border>
+
+                            <Border x:Name="bgLayout2" Background="Transparent">
+                                <Canvas>
+                                    <Rectangle Canvas.Left="158" Canvas.Top="51"  Width="237" Height="179">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="Resources/first_main_bg_text.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Canvas>
+                            </Border>
+                        </Grid>
+                        <Button KeyboardNavigation.TabIndex="7" x:Name="menuWindow" Click="btnShowBack_Click" Width="30"  Height="24" UseLayoutRounding="True" HorizontalAlignment="Right"  SnapsToDevicePixels="True" Style="{DynamicResource Win_RightButton_Other}" VerticalAlignment="Top" Margin="0,0,62,0" >
+                            <Canvas Width="12" Height="10">
+                                <Path Data="F1M7,4L7,3 8.001,3 8.001,2 9,2 9,1 10,1 10,0 0.001,0 0.001,1 1,1 1,2 2.001,2 2.001,3 3,3 3,4 4,4 4,5 6,5 6,4z" Fill="{DynamicResource Win_RightButton_Fill_Background}" Height="5" Canvas.Left="1" Canvas.Top="2.001" Width="10"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3" Canvas.Top="5.001" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="4" Canvas.Top="6.001" Width="1"/>
+                                <Path Data="F1M0,1L2,1 2,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="5" Canvas.Top="7.001" Width="2"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="6.999" Canvas.Top="6.001" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="1" Canvas.Top="3.001" Width="1"/>
+                                <Path Data="F1M0,1.001L1,1.001 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1.001" Canvas.Left="2" Canvas.Top="4" Width="1"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="9.999" Canvas.Top="3.001" Width="1.001"/>
+                                <Path Data="F1M0,0.001L0,2.001 1,2.001 1,1 11,1 11,2.001 12,2.001 12,0.001z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="2" Canvas.Left="0" Canvas.Top="1" Width="12"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7.999" Canvas.Top="5.001" Width="1"/>
+                                <Path Data="F1M0,1.001L1,1.001 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1.001" Canvas.Left="8.999" Canvas.Top="4" Width="1"/>
+
+                            </Canvas>
+                        </Button>
+                        <Button KeyboardNavigation.TabIndex="8" x:Name="minWindow" Click="btnMin_Click" Width="30"  Height="24" UseLayoutRounding="True" HorizontalAlignment="Right"  SnapsToDevicePixels="True" Style="{DynamicResource Win_RightButton_Other}" VerticalAlignment="Top" Margin="0,0,31,0" >
+                            <Canvas Width="12" Height="6">
+                                <Path Data="F1M10,2L0,2 0,0 10,0z" Fill="{DynamicResource Win_RightButton_Fill_Background}" Height="2" Canvas.Left="1" Canvas.Top="1" Width="10"/>
+                                <Path Data="F1M11,3L1,3 1,1 11,1z M0,4L12,4 12,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="0" Canvas.Top="0" Width="12"/>
+                            </Canvas>
+                        </Button>
+                        <Button KeyboardNavigation.TabIndex="9" x:Name="closeWindow" Click="btnClose_Click" Width="30"  Height="24" UseLayoutRounding="True" HorizontalAlignment="Right"  SnapsToDevicePixels="True" Style="{DynamicResource Win_RightButton_Close}" VerticalAlignment="Top" Margin="0,0,0,0" LostKeyboardFocus="closeWindow_LostKeyboardFocus" >
+                            <Canvas Width="13" Height="11">
+                                <Path Data="F1M7,4L7,3 8,3 8,2 9,2 9,1 10,1 10,0 7,0 7,1 6,1 6,2 4,2 4,1 3,1 3,0 1,0 -0.001,0 -0.001,1 1,1 1,2 2,2 2,3 3,3 3,4 4,4 4,5 3,5 3,6 2,6 2,7 1,7 1,8 -0.001,8 -0.001,9 1,9 3,9 3,8 4,8 4,7 6,7 6,8 7,8 7,9 10,9 10,8 9,8 9,7 8,7 8,6 7,6 7,5 6,5 6,4z" Fill="{DynamicResource Win_RightButton_Fill_Background}" Height="9" Canvas.Left="1" Canvas.Top="1" Width="10"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="9" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="5" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="9" Canvas.Top="3" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="9.999" Canvas.Top="2" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="8" Canvas.Top="4" Width="1"/>
+                                <Path Data="F1M0,1L2,1 2,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="5" Canvas.Top="2" Width="2"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="9" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="8" Canvas.Top="6" Width="1"/>
+                                <Path Data="F1M2,1L2,2.001 3,2.001 3,3 -0.001,3 -0.001,4 4,4 4,3 4,2.001 3,2.001 3,1 2,1 2,0.001 0.999,0.001 0.999,1z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="8" Canvas.Top="7" Width="4"/>
+                                <Path Data="F1M0,1L2,1 2,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="5" Canvas.Top="8" Width="2"/>
+                                <Path Data="F1M0,0L0,1 0,2 1,2 1,1 2,1 4,1 4,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="2" Canvas.Left="0" Canvas.Top="0" Width="4"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="5" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="0.999" Canvas.Top="2" Width="1"/>
+                                <Path Data="F1M-0.001,0L-0.001,1 3,1 3,2 4,2 4,1 4,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="2" Canvas.Left="8" Canvas.Top="0" Width="4"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="1" Width="1"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="1" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="2.999" Canvas.Top="6" Width="1"/>
+                                <Path Data="F1M2,1L1,1 1,2 0,2 0,3 0,4 4,4 4,3 2,3 1,3 1,2 2,2 2,1 3,1 3,0 2,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="0" Canvas.Top="7" Width="4"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="2.999" Canvas.Top="4" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="1.999" Canvas.Top="3" Width="1"/>
+                            </Canvas>
+                        </Button>
+                        <Canvas Height="207" ClipToBounds="True"  Grid.Row="1" Background="#F7FFFFFF" >
+                            <Rectangle Width="100" Height="100" Canvas.Left="26" Canvas.Top="22" RadiusX="3" RadiusY="3">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="Resources/ayhead.jpg"/>
+                                </Rectangle.Fill>
+
+                            </Rectangle>
+
+                          
+                                <qControl:AyQQComboBox MouseEnter="UserName_MouseEnter" MouseLeave="UserName_MouseLeave" Canvas.Left="156" Canvas.Top="24" Loaded="UserName_Loaded" AfterSelect="UnSelectAll" IsFocusOpened="False" KeyboardNavigation.TabIndex="0"  BorderBrush="#ABADB3"   HorizontalAlignment="Center" x:Name="UserName" Height="37" Background="#FFFFFF" MaxLength="50"
+        	IsEditable="True"   PanelMinHeight="48" PanelMaxHeight="600" MaskText="AY号码/手机/邮箱" FontSize="14"  MaskTextForeground="#AAAAAA" VerticalContentAlignment="Center" Width="224" >
+
+                                </qControl:AyQQComboBox>
+
+
+
+                            <Grid Canvas.Left="156" Canvas.Top="60">
+                                <PasswordBox x:Name="pb" BorderBrush="#ABADB3" Loaded="pb_Loaded" MouseEnter="pb_MouseEnter" MouseLeave="pb_MouseLeave" KeyboardNavigation.TabIndex="1" Height="37" Width="224" FontSize="14" HorizontalAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" Padding="5,0,0,0" MaxLength="20" >
+                                    <PasswordBox.Style>
+                                        <Style TargetType="PasswordBox">
+
+                                            <Setter Property="Height" Value="23"></Setter>
+                                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+                                            <Setter Property="control:PasswordBoxMonitor.IsMonitoring"  Value="True"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                                        <ControlTemplate.Resources>
+                                                            <Storyboard x:Key="enterGotFocus" >
+                                                                <DoubleAnimation Duration="0:0:0" To=".33" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Message"/>
+                                                            </Storyboard>
+                                                            <Storyboard x:Key="exitGotFocus" >
+                                                                <DoubleAnimation Duration="0:0:0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Message"/>
+                                                            </Storyboard>
+                                                        </ControlTemplate.Resources>
+                                                        <Border Name="Bd"  Background="{TemplateBinding Background}"  BorderThickness="{TemplateBinding BorderThickness}"
+                           BorderBrush="{TemplateBinding BorderBrush}"  SnapsToDevicePixels="true">
+                                                            <Grid>
+                                                                <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                                <StackPanel Orientation="Horizontal" Visibility="Collapsed" Name="myStackPanel">
+                                                                    <TextBlock HorizontalAlignment="Left" FontSize="14" VerticalAlignment="Center" x:Name="Message" Foreground="#AAAAAA" Text="密码" Margin="10,0,0,0"/>
+                                                                </StackPanel>
+                                                            </Grid>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <MultiTrigger>
+                                                                <MultiTrigger.Conditions>
+                                                                    <Condition Property="control:PasswordBoxMonitor.PasswordLength" Value="0"/>
+                                                                    <Condition Property="IsFocused" Value="True"/>
+                                                                </MultiTrigger.Conditions>
+                                                                <MultiTrigger.EnterActions>
+                                                                    <BeginStoryboard Storyboard="{StaticResource enterGotFocus}"/>
+                                                                </MultiTrigger.EnterActions>
+                                                                <MultiTrigger.ExitActions>
+                                                                    <BeginStoryboard Storyboard="{StaticResource exitGotFocus}"/>
+                                                                </MultiTrigger.ExitActions>
+                                                            </MultiTrigger>
+
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Visibility" TargetName="myStackPanel" Value="Collapsed"/>
+                                                            </Trigger>
+                                                            <Trigger Property="control:PasswordBoxMonitor.PasswordLength" Value="0">
+                                                                <Setter Property="Visibility" TargetName="myStackPanel" Value="Visible"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </PasswordBox.Style>
+                                </PasswordBox>
+                                <control:AyImageButton FocusVisualStyle="{x:Null}" x:Name="btnPwdKeboard"  Height="15" Width="16" Loaded="btnPwdKeboard_Loaded" Margin="0,0,5,0"  VerticalAlignment="Center" HorizontalAlignment="Right"
+                               RenderMode="Manner" Icon="pack://application:,,,/AYQQ8;component/Resources/pwd1.png" 
+                                           DisabledIcon="pack://application:,,,/AYQQ8;component/Resources/pwd1.png"
+                                           HoverIcon="pack://application:,,,/AYQQ8;component/Resources/pwd2.png"
+                                           PressedIcon="pack://application:,,,/AYQQ8;component/Resources/pwd3.png"></control:AyImageButton>
+                                <control:PopupEx Topmost="False" x:Name="pwdPopup"  AllowsTransparency="true" PopupAnimation="None" StaysOpen="False"  Placement="Bottom" HorizontalOffset="-60" VerticalOffset="3"
+               PlacementTarget="{Binding ElementName=pb}" Loaded="pwdPopup_Loaded">
+                                    <qControl:AyKeyBoardPwd BindElement="{Binding ElementName=pb, Path=Password, UpdateSourceTrigger=PropertyChanged}"></qControl:AyKeyBoardPwd>
+                                </control:PopupEx>
+                            </Grid>
+                            <Border BorderBrush="{DynamicResource AyTextbox.Static.Border}" x:Name="userBorder" BorderThickness="1,1,1,1" Canvas.Left="156" Canvas.Top="24"  Width="224" Height="37" Visibility="Collapsed" Loaded="Border_Loaded"></Border>
+                            <Border BorderBrush="{DynamicResource AyTextbox.Static.Border}" x:Name="pwdBorder" BorderThickness="1,1,1,1" Canvas.Left="156" Canvas.Top="60"  Width="224" Height="37" Visibility="Collapsed" Loaded="pwdBorder_Loaded"></Border>
+                            <CheckBox Style="{DynamicResource qq.checkbox}" KeyboardNavigation.TabIndex="2" Canvas.Left="152" Canvas.Top="103" Foreground="#ABADB3">忘记密码</CheckBox>
+                            <CheckBox Style="{DynamicResource qq.checkbox}" KeyboardNavigation.TabIndex="3" Canvas.Left="306" Canvas.Top="103" Foreground="#ABADB3">自动登录</CheckBox>
+                            <control:AyHyberTextBlock Foreground="#2C94F2" FontSize="14" ForegroundStatic="#2C94F2" ForegroundMouseEnter="#61B3F6" ForegroundPressed="#006DB0"  Canvas.Left="404" Canvas.Top="34" MouseLeftButtonDown="AyHyberTextBlock_MouseLeftButtonDown">注册账号</control:AyHyberTextBlock>
+                            <control:AyHyberTextBlock Foreground="#2C94F2" FontSize="14" ForegroundStatic="#2C94F2" ForegroundMouseEnter="#61B3F6" ForegroundPressed="#006DB0"  Canvas.Left="404" Canvas.Top="69" MouseLeftButtonDown="AyHyberTextBlock_MouseLeftButtonDown_1">找回密码</control:AyHyberTextBlock>
+                            <Button x:Name="btnLogin" Click="btnLogin_Click" KeyboardNavigation.TabIndex="6" FontSize="18" Style="{DynamicResource LoginButtonStyle}" Width="224" Height="41" Canvas.Left="156" Canvas.Top="147">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/AYQQ8;component/Resources/anquanlogin.png" Width="20" Margin="0,0,11,0"></Image>
+                                    <Label Foreground="White">安 全 登 录</Label>
+                                </StackPanel>
+                            </Button>
+                            <control:AyImageButton x:Name="addperson" KeyboardNavigation.TabIndex="4"  Height="24" Width="24" RenderMode="Manner" Icon="/AYQQ8;component/Resources/addperson1.png"
+                               PressedIcon="/AYQQ8;component/Resources/addperson3.png"
+                               HoverIcon="/AYQQ8;component/Resources/addperson2.png" Canvas.Top="172" Canvas.Left="11" />
+                            <control:AyImageButton x:Name="erweima" KeyboardNavigation.TabIndex="5"  Height="24" Width="24" RenderMode="Manner" Icon="/AYQQ8;component/Resources/erweima1.png"
+                               PressedIcon="/AYQQ8;component/Resources/erweima3.png"
+                               HoverIcon="/AYQQ8;component/Resources/erweima2.png" Canvas.Top="172" Canvas.Left="493" />
+
+                        </Canvas>
+                    </Grid>
+                </Grid>
+
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:AyLoginBackWindow}">
+                <Grid Margin="0,-24,0,0">
+                    <Border x:Name="AyShadowLayer"  CornerRadius="0"  Background="#00FFFFFF" BorderBrush="#F64D4D4D" Margin="0"
+                     BorderThickness="7" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+                        <Border.Effect>
+                            <BlurEffect Radius="14"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="38"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.RowSpan="2">
+                            <Border  x:Name="bgLayoutStatic"  Margin="0,0,0,0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Resources/static.png" Stretch="Uniform"/>
+                                </Border.Background>
+
+                            </Border>
+
+                            <Border x:Name="bgLayout2" Background="Transparent">
+                            </Border>
+                        </Grid>
+
+                        <Canvas  Grid.Row="0" Background="#FFFFFF">
+                            <Canvas.OpacityMask>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="#FF1C1C1C" Offset="0.2"/>
+                                </LinearGradientBrush>
+                            </Canvas.OpacityMask>
+                            <control:AyTextBox Loaded="bindemail_Loaded" BorderBrush="#ABADB3" TabIndex="0"  HorizontalAlignment="Center" x:Name="bindemail" Height="37" Background="White" 
+                               TextWrapping="NoWrap" Text="" Mask="绑定的邮箱" FontSize="14" Canvas.Top="84" Width="224" VerticalContentAlignment="Center" Canvas.Left="156"></control:AyTextBox>
+                        </Canvas>
+                        <Canvas Height="38"  Grid.Row="1" Background="#CCFFFFFF">
+                            <Button Width="90" Height="32" Canvas.Right="110" TabIndex="1">确定</Button>
+                            <Button Width="90" Height="32" Canvas.Right="10" Click="btnShowFront_Click" TabIndex="2">取消</Button>
+                        </Canvas>
+                        <Button x:Name="minWindow" TabIndex="3" Click="btnMin_Click" Width="30"  Height="24" UseLayoutRounding="True" HorizontalAlignment="Right"  SnapsToDevicePixels="True" Style="{DynamicResource Win_RightButton_Other}" VerticalAlignment="Top" Margin="0,0,31,0" >
+                            <Canvas Width="12" Height="6">
+                                <Path Data="F1M10,2L0,2 0,0 10,0z" Fill="{DynamicResource Win_RightButton_Fill_Background}" Height="2" Canvas.Left="1" Canvas.Top="1" Width="10"/>
+                                <Path Data="F1M11,3L1,3 1,1 11,1z M0,4L12,4 12,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="0" Canvas.Top="0" Width="12"/>
+                            </Canvas>
+                        </Button>
+                        <Button x:Name="closeWindow" TabIndex="4" LostKeyboardFocus="closeWindow_LostKeyboardFocus_1" Click="btnClose_Click" Width="30"  Height="24" UseLayoutRounding="True" HorizontalAlignment="Right"  SnapsToDevicePixels="True" Style="{DynamicResource Win_RightButton_Close}" VerticalAlignment="Top" Margin="0,0,0,0" >
+                            <Canvas Width="13" Height="11">
+                                <Path Data="F1M7,4L7,3 8,3 8,2 9,2 9,1 10,1 10,0 7,0 7,1 6,1 6,2 4,2 4,1 3,1 3,0 1,0 -0.001,0 -0.001,1 1,1 1,2 2,2 2,3 3,3 3,4 4,4 4,5 3,5 3,6 2,6 2,7 1,7 1,8 -0.001,8 -0.001,9 1,9 3,9 3,8 4,8 4,7 6,7 6,8 7,8 7,9 10,9 10,8 9,8 9,7 8,7 8,6 7,6 7,5 6,5 6,4z" Fill="{DynamicResource Win_RightButton_Fill_Background}" Height="9" Canvas.Left="1" Canvas.Top="1" Width="10"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="9" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="5" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="9" Canvas.Top="3" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="9.999" Canvas.Top="2" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="8" Canvas.Top="4" Width="1"/>
+                                <Path Data="F1M0,1L2,1 2,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="5" Canvas.Top="2" Width="2"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="9" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="8" Canvas.Top="6" Width="1"/>
+                                <Path Data="F1M2,1L2,2.001 3,2.001 3,3 -0.001,3 -0.001,4 4,4 4,3 4,2.001 3,2.001 3,1 2,1 2,0.001 0.999,0.001 0.999,1z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="8" Canvas.Top="7" Width="4"/>
+                                <Path Data="F1M0,1L2,1 2,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="5" Canvas.Top="8" Width="2"/>
+                                <Path Data="F1M0,0L0,1 0,2 1,2 1,1 2,1 4,1 4,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="2" Canvas.Left="0" Canvas.Top="0" Width="4"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="5" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="0.999" Canvas.Top="2" Width="1"/>
+                                <Path Data="F1M-0.001,0L-0.001,1 3,1 3,2 4,2 4,1 4,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="2" Canvas.Left="8" Canvas.Top="0" Width="4"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="7" Canvas.Top="1" Width="1"/>
+                                <Path Data="F1M0,1L1.001,1 1.001,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="3.999" Canvas.Top="1" Width="1.001"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="2.999" Canvas.Top="6" Width="1"/>
+                                <Path Data="F1M2,1L1,1 1,2 0,2 0,3 0,4 4,4 4,3 2,3 1,3 1,2 2,2 2,1 3,1 3,0 2,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="4" Canvas.Left="0" Canvas.Top="7" Width="4"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="2.999" Canvas.Top="4" Width="1"/>
+                                <Path Data="F1M0,1L1,1 1,0 0,0z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Button}},Path=Foreground}" Height="1" Canvas.Left="1.999" Canvas.Top="3" Width="1"/>
+                            </Canvas>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+
+        </control:TransitionPresenter.Resources>
+    </control:TransitionPresenter>
+
+
+</control:AyWindow>

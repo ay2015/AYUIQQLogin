@@ -1,0 +1,425 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:qq="clr-namespace:AYQQ8.Controls"
+                        xmlns:control="http://www.ayjs.net/controls" 
+                    	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+                        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    >
+    <Style x:Key="AyQQComboBoxCloseButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" CornerRadius="0" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" Width="16" Height="16" SnapsToDevicePixels="True">
+                        <Grid Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path x:Name="path1" Stroke="White" Data="M0,0 L8,8" StrokeThickness="1" />
+                            <Path x:Name="path2" Stroke="White" Data="M8,0 L0,8" StrokeThickness="1" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource AyProgressBarAnimationColor1}"></SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource AyProgressBarAnimationColor2}"></SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Type qq:AyQQComboBox}" TargetType="{x:Type qq:AyQQComboBox}">
+        <Style.Resources>
+            <Style x:Key="{x:Type qq:AyQQComboBoxItem}" TargetType="{x:Type qq:AyQQComboBoxItem}">
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0,1"/>
+                <Setter Property="MinHeight" Value="25"></Setter>
+                <Setter Property="Height" Value="auto"/>
+                <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                <Setter Property="VerticalContentAlignment" Value="center"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type qq:AyQQComboBoxItem}">
+                            <Border  x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="3,0"
+                                     Padding="{TemplateBinding Padding}"
+                                     Width="{Binding Width, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type qq:AyQQComboBoxItem},AncestorLevel=1}}">
+                                <Border.Background>
+                                    <SolidColorBrush Color="White"></SolidColorBrush>
+                                </Border.Background>
+                                <!--<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="ViewStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0:0:0.15" To="MinItem">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="25" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="25" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                            <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                                <DiscreteObjectKeyFrame.Value>
+                                                                    <Visibility>Collapsed</Visibility>
+                                                                </DiscreteObjectKeyFrame.Value>
+                                                            </DiscreteObjectKeyFrame>
+                                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                    </ColorAnimationUsingKeyFrames>
+
+
+                                                </Storyboard>
+                                            </VisualTransition>
+                                            <VisualTransition GeneratedDuration="0:0:0.15" To="MiddleItem">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="35" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="35" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                            <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                                <DiscreteObjectKeyFrame.Value>
+                                                                    <Visibility>Collapsed</Visibility>
+                                                                </DiscreteObjectKeyFrame.Value>
+                                                            </DiscreteObjectKeyFrame>
+                                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualTransition>
+                                            <VisualTransition GeneratedDuration="0:0:0.15" To="SelectItem">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="49" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="49" Duration="0:0:0.15" ></DoubleAnimation>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                            <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                                <DiscreteObjectKeyFrame.Value>
+                                                                    <Visibility>Visible</Visibility>
+                                                                </DiscreteObjectKeyFrame.Value>
+                                                            </DiscreteObjectKeyFrame>
+                                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                        <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ComboBoxItem.ItemsviewHover.Background.Color}"/>
+                                                    </ColorAnimationUsingKeyFrames>
+
+
+                                                </Storyboard>
+                                            </VisualTransition>
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="MinItem">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="25" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="25" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                    <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                            <DiscreteObjectKeyFrame.Value>
+                                                                <Visibility>Collapsed</Visibility>
+                                                            </DiscreteObjectKeyFrame.Value>
+                                                        </DiscreteObjectKeyFrame>
+                                                    </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="MiddleItem">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="35" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="35" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                    <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                            <DiscreteObjectKeyFrame.Value>
+                                                                <Visibility>Collapsed</Visibility>
+                                                            </DiscreteObjectKeyFrame.Value>
+                                                        </DiscreteObjectKeyFrame>
+                                                    </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="SelectItem">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Width" To="49" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetName="bdIcon" 
+                       Storyboard.TargetProperty="Height" To="49" Duration="0:0:0.15" ></DoubleAnimation>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="qqnick"   Storyboard.TargetProperty="Visibility" Duration="0:0:0">
+                                                    <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                        <DiscreteObjectKeyFrame KeyTime="0:0:0" >
+                                                            <DiscreteObjectKeyFrame.Value>
+                                                                <Visibility>Visible</Visibility>
+                                                            </DiscreteObjectKeyFrame.Value>
+                                                        </DiscreteObjectKeyFrame>
+                                                    </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="qqnumber">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="white"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ComboBoxItem.ItemsviewHover.Background.Color}"/>
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                                        <Border Margin="0,0,5,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" >
+                                            <!--<Border.Clip>
+                                            <RectangleGeometry RadiusX="3" RadiusY="3">
+                                                <RectangleGeometry.Rect>
+                                                    <Rect Width="21" Height="21" x:Name="cornerRect"/>
+                                                </RectangleGeometry.Rect>
+                                            </RectangleGeometry>
+                                        </Border.Clip>-->
+                                            <control:AyIconAll Icon="{TemplateBinding ItemHeader}" Width="25" Height="25" x:Name="bdIcon" ></control:AyIconAll>
+                                        </Border>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <control:AyTextBlock  Width="140" Margin="0,0,0,2" Cursor="Arrow" Focusable="False" x:Name="qqnick" Background="Transparent" Text="{TemplateBinding NickName}" Foreground="Black" Visibility="Collapsed" FontSize="12">
+                                            </control:AyTextBlock>
+                                            <control:AyTextBlock Cursor="Arrow" Width="140" Focusable="False" x:Name="qqnumber" Background="Transparent" Text="{TemplateBinding AyNumber}" Foreground="Black" FontSize="12"></control:AyTextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Button x:Name="PART_CloseButton" ToolTip="删除账号信息" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource AyQQComboBoxCloseButtonStyle}" Visibility="Visible" />
+                                </Grid>
+                            </Border>
+                  
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AyComboBox.Static.Border}"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template" Value="{DynamicResource ComboBoxTemplate}"/>
+        <Setter Property="IsTextSearchEnabled" Value="True"/>
+        <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel></VirtualizingStackPanel>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush"  Value="{DynamicResource AyTextbox.Static.Border}"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition  Property="IsEditable" Value="false"></Condition>
+                    <Condition  Property="IsTransparentBackground" Value="false"></Condition>
+                </MultiTrigger.Conditions>
+                <Setter Property="Template" Value="{DynamicResource ComboBoxTemplate}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition  Property="IsEditable" Value="false"></Condition>
+                    <Condition  Property="IsTransparentBackground" Value="true"></Condition>
+                </MultiTrigger.Conditions>
+                <Setter Property="Template" Value="{DynamicResource ComboBoxTouTemplate}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition  Property="IsEditable" Value="true"></Condition>
+                    <Condition  Property="IsTransparentBackground" Value="false"></Condition>
+                </MultiTrigger.Conditions>
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Template" Value="{DynamicResource ComboBoxEditableTemplate}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition  Property="IsEditable" Value="true"></Condition>
+                    <Condition  Property="IsTransparentBackground" Value="true"></Condition>
+                </MultiTrigger.Conditions>
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Template" Value="{DynamicResource ComboBoxEditableTouTemplate}"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="qq.checkbox" TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#ABADB3"/>
+        <Setter Property="Foreground" Value="#656565"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="5,4"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="AyWhenCheckedBox">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="indeterminateMark">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="optionMark">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <CircleEase EasingMode="EaseOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="17"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="11"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Padding)" Storyboard.TargetName="CheckOutBorder">
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.1" Value="4"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.15" Value="1"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="4"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="AyWhenCheckBoxUnCheck">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="optionMark">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="11"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="17"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Padding)" Storyboard.TargetName="CheckOutBorder">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="4"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.15" Value="4"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="indeterminateMark">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="AyCheckBoxNull">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="nullMark">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="9"></EasingThicknessKeyFrame>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.15" Value="1"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="3"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="AyCheckBoxNullExit">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="nullMark">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="3">
+                                    <EasingThicknessKeyFrame.EasingFunction>
+                                        <CircleEase EasingMode="EaseOut"/>
+                                    </EasingThicknessKeyFrame.EasingFunction>
+                                </EasingThicknessKeyFrame>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="9"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <StackPanel Orientation="Horizontal"   x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Border x:Name="CheckOutBorder" Padding="4" Width="21" Height="21">
+                            <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" MinWidth="13" MinHeight="13">
+                                <Grid x:Name="markGrid" >
+                                    <Path Width="0" x:Name="optionMark" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Data="F1M5.095,11.131C5.095,11.131 1.107,16.095 1.107,16.095 1.107,16.095 3.991,19.357 6.277,22.564 6.559,22.96 6.843,23.381 7.12,23.806 8.392,25.761 9.503,27.798 9.503,27.798 9.503,27.798 11.786,27.952 11.786,27.952 11.786,27.952 16.066,21.908 20.851,15.898 26.005,9.425 31.94,4.202 31.94,4.202 31.94,4.202 29.714,1.476 29.714,1.476 29.714,1.476 24.586,4.752 20.043,8.787 17.521,11.026 11.628,18.722 11.628,18.722 11.628,18.722 10.19,18.667 10.19,18.667 10.19,18.667 8.573,15.665 7.842,14.508 6.569,12.494 5.095,11.131 5.095,11.131z" Fill="{DynamicResource AyCheckBox.OptionMark.Static.Glyph}"  />
+                                    <Rectangle Margin="1" x:Name="indeterminateMark" Fill="#FFFFFF"  Opacity="1"/>
+                                    <Rectangle Margin="9" x:Name="nullMark" Fill="{DynamicResource AyCheckBox.OptionMark.Static.Glyph}" />
+                                </Grid>
+                            </Border>
+                        </Border>
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Border}"/>
+                            <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="AyWhenCheckedBox_BeginStoryboard" Storyboard="{StaticResource AyWhenCheckedBox}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="AyWhenCheckBoxUnCheck_BeginStoryboard" Storyboard="{StaticResource AyWhenCheckBoxUnCheck}"/>
+                            </Trigger.ExitActions>
+                            <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="AyCheckBoxNullExit_BeginStoryboard" Storyboard="{StaticResource AyCheckBoxNullExit}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="AyCheckBoxNull_BeginStoryboard" Storyboard="{StaticResource AyCheckBoxNull}"/>
+                            </Trigger.EnterActions>
+                            <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Border}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource AyCheckBox.OptionMark.MouseOver.Background}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    
+    
+    
+</ResourceDictionary>

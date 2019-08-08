@@ -1,0 +1,33 @@
+F:\4.2\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe.config
+E:\4.2\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe.config
+I:\sanxing\AY AYUI世界\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe.config
+E:\sanxing\AY AYUI世界\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe.config
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\bg\bg\a景观\葡萄红棱形.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\bg\thumb\a景观\葡萄红棱形.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Config\application.xml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Config\Config.xml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Images\login\1.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Images\login\2.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Images\login\4.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Images\login\3.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\Contents\Images\login\5.jpg
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe.config
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.exe
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\bin\AYQQ8.pdb
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.csprojResolveAssemblyReference.cache
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\Controls\AyKeyBoardPwd.g.cs
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\MainWindow.g.cs
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\App.g.cs
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\GeneratedInternalTypeHelper.g.cs
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8_MarkupCompile.cache
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8_MarkupCompile.lref
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\App.baml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\Contents\Styles\QQDictionary.baml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\Controls\AyKeyBoardPwd.baml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\MainWindow.baml
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.g.resources
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.Properties.Resources.resources
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.csproj.GenerateResource.Cache
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.csproj.CoreCompileInputs.cache
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.exe
+H:\sanxing\AY AYUI\★产品源码\AYQQ8.4无网页背景源码\AYQQ8\obj\Release\AYQQ8.pdb
